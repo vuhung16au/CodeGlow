@@ -149,7 +149,26 @@ export default function Home() {
         )}
 
         <footer className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p>Format your code with proper indentation and syntax highlighting, then copy as RTF</p>
+          <p className="mb-2">Format your code with proper indentation and syntax highlighting, then copy as RTF</p>
+          <div className="flex items-center justify-center gap-4">
+            <a 
+              href="https://github.com/vuhung16au/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              GitHub
+            </a>
+            <span>•</span>
+            <a 
+              href="https://www.linkedin.com/in/nguyenvuhung/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+            >
+              LinkedIn
+            </a>
+          </div>
         </footer>
       </div>
     </div>
