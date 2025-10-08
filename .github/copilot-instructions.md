@@ -44,7 +44,12 @@ The API logic must adhere to the following library choices for the formatting pi
 
 - **Formatting Chain:** The backend task is a clear pipeline: **Raw Code → Indented Code → Highlighted HTML → RTF String**. Copilot must adhere to this flow.
 - **Multi-Language:** All formatting and highlighting functions must handle the distinct syntax of **Python**, **Java**, and **JavaScript** correctly.
-- **Client Logic:** The frontend must use the native **Clipboard API** to copy the RTF string into the clipboard, not just the plain text.
+- **Client Logic:** The frontend must use the native **Clipboard API** to copy the RTF string into the clipboard with proper MIME types (`text/rtf` and `text/plain` as fallback), not just plain text.
+- **Clipboard Style Policy:** When code is copied to clipboard:
+  - Background: White (`#FFFFFF`)
+  - Font: Courier New, monospace, 10pt
+  - Use standard syntax highlighting colors (keywords: red, strings: dark blue, comments: gray, functions: purple, etc.)
+  - RTF format compatible with Microsoft Word, Google Docs, and other word processors
 
 ---
 

@@ -39,7 +39,7 @@ export default function Home() {
       if (data.rtf) {
         setRtfData(data.rtf);
       }
-      setMessage('✓ Code formatted successfully! Click "Copy to Word/RTF" to copy.');
+      setMessage('✓ Code formatted successfully! Click "Copy to clipboard" to copy.');
     } catch (error) {
       setMessage('✗ Error formatting code: ' + (error as Error).message);
     } finally {
@@ -51,10 +51,27 @@ export default function Home() {
     if (!rtfData) return;
     
     try {
-      await navigator.clipboard.writeText(rtfData);
-      setMessage('✓ Formatted code copied to clipboard as RTF!');
+      // Create a ClipboardItem with RTF data
+      // For RTF to work in word processors, we need to write it as 'text/rtf'
+      const rtfBlob = new Blob([rtfData], { type: 'text/rtf' });
+      const plainTextBlob = new Blob([rtfData], { type: 'text/plain' });
+      
+      // Use ClipboardItem to write both RTF and plain text
+      const clipboardItem = new ClipboardItem({
+        'text/rtf': rtfBlob,
+        'text/plain': plainTextBlob,
+      });
+      
+      await navigator.clipboard.write([clipboardItem]);
+      setMessage('✓ Formatted code copied to clipboard! You can now paste it into Word, Google Docs, or any text editor.');
     } catch (error) {
-      setMessage('✗ Error copying to clipboard: ' + (error as Error).message);
+      // Fallback: if ClipboardItem fails, try plain text
+      try {
+        await navigator.clipboard.writeText(rtfData);
+        setMessage('✓ RTF code copied to clipboard as text. Paste into a text editor and save as .rtf file.');
+      } catch {
+        setMessage('✗ Error copying to clipboard: ' + (error as Error).message);
+      }
     }
   };
 
@@ -139,7 +156,7 @@ export default function Home() {
                   onClick={handleCopyRtf}
                   className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-200"
                 >
-                  Copy to Word/RTF
+                  Copy to clipboard
                 </button>
               </>
             )}
@@ -153,7 +170,7 @@ export default function Home() {
         )}
 
         <footer className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          <p className="mb-2">Format your code with proper indentation and syntax highlighting, then copy as RTF</p>
+          <p className="mb-2">Format your code with proper indentation and syntax highlighting, then copy to clipboard</p>
           <div className="flex items-center justify-center gap-4">
             <a 
               href="https://github.com/vuhung16au/" 
