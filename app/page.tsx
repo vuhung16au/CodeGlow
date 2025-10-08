@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ThemeToggle } from './components/ThemeToggle';
 
 export default function Home() {
   const [code, setCode] = useState('');
@@ -60,7 +61,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-8">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-8 text-center">
+        <header className="mb-8 text-center relative">
+          <div className="absolute top-0 right-0">
+            <ThemeToggle />
+          </div>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
             CodeGlow
           </h1>
