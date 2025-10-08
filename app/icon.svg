@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#1E293B"/>
+  
+  <!-- Code brackets with gradient and glow -->
+  <g filter="url(#glow)">
+    <!-- Left bracket -->
+    <path d="M 40 32 L 28 32 L 28 64 L 28 96 L 40 96" 
+          stroke="url(#gradient)" 
+          stroke-width="6" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none"/>
+    
+    <!-- Right bracket -->
+    <path d="M 88 32 L 100 32 L 100 64 L 100 96 L 88 96" 
+          stroke="url(#gradient)" 
+          stroke-width="6" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none"/>
+    
+    <!-- Forward slash in the middle -->
+    <line x1="58" y1="80" x2="70" y2="48" 
+          stroke="url(#gradient)" 
+          stroke-width="6" 
+          stroke-linecap="round"/>
+  </g>
+</svg>
