@@ -8,7 +8,7 @@ The ultimate code beautifier for Python, Java, & JavaScript. Indent, format, and
 
 - 🎨 **Multi-language support**: JavaScript, Python, and Java
 - 🔧 **Smart formatting**: Uses Prettier for JavaScript, basic indentation for Python and Java
-- 🌈 **Syntax highlighting**: Powered by Prism.js with color-coded tokens
+- 🌈 **Syntax highlighting**: Powered by Prism.js with high-contrast, vibrant colors optimized for MS Word visibility
 - 📋 **RTF generation**: Converts formatted and highlighted code to Rich Text Format with white background
 - 📲 **Clipboard integration**: One-click copy to clipboard for pasting into Word, Google Docs, and other editors
 - 💅 **Modern UI**: Clean, responsive interface built with Tailwind CSS
@@ -56,9 +56,17 @@ npm run start
 
 The code will be properly formatted with:
 - Correct indentation
-- Syntax highlighting with colors on white background
+- Syntax highlighting optimized for visibility in MS Word (Light & Dark mode)
+- High-contrast, vibrant colors:
+  - **Keywords** (red): `if`, `for`, `def`, `class`, `import`, etc.
+  - **Strings** (dark blue): string literals
+  - **Comments** (medium gray): code comments
+  - **Functions** (purple): function and class names
+  - **Numbers** (bright blue): numeric literals
+  - **Operators** (red): `+`, `-`, `*`, `=`, etc.
+- White background for optimal readability
 - Monospace font (Courier New, 10pt)
-- Ready-to-paste RTF format
+- Ready-to-paste RTF format compatible with MS Word, Google Docs, and other word processors
 
 ## API
 

@@ -22,19 +22,19 @@ When code is copied to the clipboard:
 
 - **Background**: White (`#FFFFFF`) - RTF uses `\highlight1` or `\cb1` with white as the first color in the color table
 - **Font**: Courier New, monospace, 10pt (RTF `\fs20` means 10pt since font size is in half-points)
-- **Syntax Colors**: Use most common/standard syntax highlighting colors for each language:
-  - **Keywords** (if, for, class, def, etc.): `#cf222e` (red)
-  - **Strings**: `#0a3069` (dark blue)
-  - **Comments**: `#59636e` (gray)
-  - **Functions**: `#8250df` (purple)
-  - **Numbers**: `#0550ae` (blue)
-  - **Operators**: `#000000` (black)
-  - **Punctuation**: `#000000` (black)
-  - **Classes**: `#953800` (orange)
-  - **Variables**: `#000000` (black)
-  - **Default**: `#000000` (black)
+- **Syntax Colors**: Use high-contrast, vibrant colors optimized for visibility in MS Word (both Light and Dark mode):
+  - **Keywords** (if, for, class, def, import, etc.): `#d73a49` (bright red)
+  - **Strings**: `#032f62` (dark blue)
+  - **Comments**: `#6a737d` (medium gray)
+  - **Functions**: `#6f42c1` (purple)
+  - **Numbers**: `#005cc5` (bright blue)
+  - **Operators** (+, -, *, =, etc.): `#d73a49` (bright red)
+  - **Punctuation** (brackets, commas, etc.): `#24292e` (dark gray)
+  - **Classes**: `#6f42c1` (purple)
+  - **Variables**: `#24292e` (dark gray)
+  - **Default**: `#24292e` (dark gray)
 
-These colors should work well on a white background and are compatible with common syntax highlighting themes.
+These colors are designed to be visible in MS Word regardless of viewing mode (Light/Dark mode with white or dark page colors).
 
 ## Output Requirements
 

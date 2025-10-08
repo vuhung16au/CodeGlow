@@ -48,7 +48,17 @@ The API logic must adhere to the following library choices for the formatting pi
 - **Clipboard Style Policy:** When code is copied to clipboard:
   - Background: White (`#FFFFFF`)
   - Font: Courier New, monospace, 10pt
-  - Use standard syntax highlighting colors (keywords: red, strings: dark blue, comments: gray, functions: purple, etc.)
+  - Use high-contrast, vibrant syntax highlighting colors optimized for visibility in MS Word:
+    - Keywords: Bright red (`#d73a49`) - for if, for, def, class, import, etc.
+    - Strings: Dark blue (`#032f62`) - for string literals
+    - Comments: Medium gray (`#6a737d`) - for code comments
+    - Functions: Purple (`#6f42c1`) - for function names
+    - Numbers: Bright blue (`#005cc5`) - for numeric literals
+    - Operators: Bright red (`#d73a49`) - for +, -, *, =, etc.
+    - Punctuation: Dark gray (`#24292e`) - for brackets, commas, etc.
+    - Class names: Purple (`#6f42c1`) - for class definitions
+    - Variables: Dark gray (`#24292e`) - for variable names
+  - Colors must be visible in both MS Word Light mode and Dark mode (with white or dark page colors)
   - RTF format compatible with Microsoft Word, Google Docs, and other word processors
 
 ---

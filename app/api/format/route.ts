@@ -5,18 +5,19 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';
 
-// Color palette for syntax highlighting (matching common themes)
+// Color palette for syntax highlighting optimized for visibility in MS Word
+// Colors are chosen to be visible in both Light and Dark mode viewing
 const COLORS = {
-  keyword: '#cf222e',
-  string: '#0a3069',
-  comment: '#59636e',
-  function: '#8250df',
-  number: '#0550ae',
-  operator: '#000000',
-  punctuation: '#000000',
-  class: '#953800',
-  variable: '#000000',
-  default: '#000000',
+  keyword: '#d73a49',      // Bright red - keywords (if, for, def, class, import, etc.)
+  string: '#032f62',       // Dark blue - string literals
+  comment: '#6a737d',      // Medium gray - comments
+  function: '#6f42c1',     // Purple - function names
+  number: '#005cc5',       // Bright blue - numeric literals
+  operator: '#d73a49',     // Bright red - operators (+, -, *, =, etc.)
+  punctuation: '#24292e',  // Dark gray - punctuation (brackets, commas, etc.)
+  class: '#6f42c1',        // Purple - class names
+  variable: '#24292e',     // Dark gray - variable names
+  default: '#24292e',      // Dark gray - default text
 };
 
 // Map Prism token types to our color scheme
