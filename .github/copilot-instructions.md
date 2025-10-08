@@ -20,7 +20,7 @@ CodeGlow is a code beautifier application built with Next.js that formats and be
 - Leverage Next.js built-in optimizations (automatic code splitting, route prefetching)
 
 ### Code Style
-- Use TypeScript when possible for type safety
+- **Always use TypeScript** - All new code must be written in TypeScript for type safety and maintainability
 - Follow ESLint rules configured in the project
 - Use functional components with hooks
 - Keep components small and focused on a single responsibility
