@@ -223,8 +223,9 @@ function convertToRtf(tokens: (string | Prism.Token)[]): string {
   const rtfHeader = '{\\rtf1\\ansi\\deff0 {\\fonttbl{\\f0\\fmodern\\fprq1\\fcharset0 Courier New;}}';
   const rtfBody = tokensToRtf(tokens);
   
-  // Set white background using \cb1 and ensure proper highlighting
-  return `${rtfHeader}${colorTable}\\f0\\fs20\\highlight1 ${rtfBody}}`;
+  // Set white background using \cb1 (cell background color index 1)
+  // \f0 = use font 0 (Courier New), \fs20 = 10pt font size, \cb1 = white background
+  return `${rtfHeader}${colorTable}\\f0\\fs20\\cb1 ${rtfBody}}`;
 }
 
 export async function POST(request: NextRequest) {
