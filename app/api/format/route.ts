@@ -180,6 +180,39 @@ function highlightCode(code: string, language: string): (string | Prism.Token)[]
   return Prism.tokenize(code, grammar) as (string | Prism.Token)[];
 }
 
+// Convert tokens to HTML for display
+function tokensToHtml(tokens: (string | Prism.Token)[]): string {
+  let html = '';
+
+  function processToken(token: string | Prism.Token): void {
+    if (typeof token === 'string') {
+      html += token
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>');
+    } else {
+      const color = getColorForToken(token.type);
+      const content = typeof token.content === 'string' 
+        ? token.content 
+        : Array.isArray(token.content)
+        ? token.content.map(t => typeof t === 'string' ? t : t.content).join('')
+        : '';
+      
+      const escapedContent = content
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>');
+      
+      html += `<span style="color: ${color}">${escapedContent}</span>`;
+    }
+  }
+
+  tokens.forEach(processToken);
+  return html;
+}
+
 // Convert highlighted code to RTF
 function convertToRtf(tokens: (string | Prism.Token)[]): string {
   const colorTable = buildRtfColorTable();
@@ -216,9 +249,13 @@ export async function POST(request: NextRequest) {
     // Step 3: Convert to RTF
     const rtf = convertToRtf(tokens);
 
+    // Step 4: Generate HTML for display
+    const html = tokensToHtml(tokens);
+
     return NextResponse.json({
       rtf,
       formatted: formattedCode,
+      html,
     });
   } catch (error) {
     console.error('Error in format API:', error);
