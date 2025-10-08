@@ -48,20 +48,23 @@ function hexToRtfColor(hex: string): { r: number; g: number; b: number } {
 function buildRtfColorTable(): string {
   const colors = Object.values(COLORS);
   const uniqueColors = [...new Set(colors)];
+  // Add white background as first color in the table
+  const whiteColor = '\\red255\\green255\\blue255;';
   const colorTable = uniqueColors
     .map((hex) => {
       const { r, g, b } = hexToRtfColor(hex);
       return `\\red${r}\\green${g}\\blue${b};`;
     })
     .join('');
-  return `{\\colortbl;${colorTable}}`;
+  return `{\\colortbl;${whiteColor}${colorTable}}`;
 }
 
 // Get color index in RTF color table
 function getColorIndex(hex: string): number {
   const colors = Object.values(COLORS);
   const uniqueColors = [...new Set(colors)];
-  return uniqueColors.indexOf(hex) + 1;
+  // Add 2 because: index 0 is reserved, index 1 is white background, so colors start at 2
+  return uniqueColors.indexOf(hex) + 2;
 }
 
 // Escape RTF special characters
@@ -216,10 +219,12 @@ function tokensToHtml(tokens: (string | Prism.Token)[]): string {
 // Convert highlighted code to RTF
 function convertToRtf(tokens: (string | Prism.Token)[]): string {
   const colorTable = buildRtfColorTable();
+  // RTF header with white background (cb1 = first color in color table which is white)
   const rtfHeader = '{\\rtf1\\ansi\\deff0 {\\fonttbl{\\f0\\fmodern\\fprq1\\fcharset0 Courier New;}}';
   const rtfBody = tokensToRtf(tokens);
   
-  return `${rtfHeader}${colorTable}\\f0\\fs20 ${rtfBody}}`;
+  // Set white background using \cb1 and ensure proper highlighting
+  return `${rtfHeader}${colorTable}\\f0\\fs20\\highlight1 ${rtfBody}}`;
 }
 
 export async function POST(request: NextRequest) {
