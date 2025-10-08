@@ -145,7 +145,7 @@ export default function Home() {
 
             {formattedHtml && (
               <>
-                <div className="mb-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-md border border-gray-200 dark:border-gray-700 overflow-auto h-96">
+                <div className="mb-4 p-4 bg-white rounded-md border border-gray-200 dark:border-gray-700 overflow-auto h-96">
                   <pre 
                     className="font-mono text-sm"
                     dangerouslySetInnerHTML={{ __html: formattedHtml }}
