@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.5",
-    "next": "15.5.7",
+    "next": "15.5.8",
     "prettier": "^3.6.2",
     "prismjs": "^1.30.0",
     "react": "19.1.0",
